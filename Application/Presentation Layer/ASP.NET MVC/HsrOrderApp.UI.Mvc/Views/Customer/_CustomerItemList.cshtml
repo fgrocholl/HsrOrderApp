@@ -7,6 +7,9 @@
 <table class="table">
     <tr>
         <th>
+            @Strings.CustomerDetailView_CustomerTitle
+        </th>
+        <th>
             @Strings.CustomerDetailView_Name
         </th>
         <th>
@@ -24,6 +27,9 @@
     @foreach (var item in Model.Items)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

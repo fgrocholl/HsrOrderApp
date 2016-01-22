@@ -18,6 +18,7 @@ namespace HsrOrderApp.BL.DomainModel
             this.FirstName = string.Empty;
             this.Addresses = new List<Address>().AsQueryable();
             this.Orders = new List<Order>().AsQueryable();
+            this.Title = string.Empty;
 
             this.User = null;
         }
@@ -29,6 +30,8 @@ namespace HsrOrderApp.BL.DomainModel
 
         [StringLengthValidator(1, 50)]
         public string FirstName { get; set; }
+        [StringLengthValidator(1, 50)]
+        public string Title { get; set; }
 
         public IQueryable<Address> Addresses { get; set; }
         public IQueryable<Order> Orders { get; set; }
