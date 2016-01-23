@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="IAdminService.cs" />
     <Compile Include="ICustomerService.cs" />
+    <Compile Include="ISupplierService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
