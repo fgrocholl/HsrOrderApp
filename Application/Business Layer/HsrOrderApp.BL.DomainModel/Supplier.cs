@@ -13,9 +13,11 @@ namespace HsrOrderApp.BL.DomainModel
         {
             this.Products = new List<Product>().AsQueryable();
         }
+        public int SupplierId { get; set; }
+
         public string AccountNumber { get; set; }
 
-        public int CreditRating { get; set; }
+        public short CreditRating { get; set; }
 
         public bool PreferredSupplierFlag { get; set; }
 

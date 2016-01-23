@@ -4,27 +4,27 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories.Adapters
 {
     internal static class SupplierAdapter
     {
-        internal static BL.DomainModel.Supplier AdaptSupplier(EntityReference<Supplier> c)
+        internal static BL.DomainModel.Supplier AdaptSupplier(EntityReference<Supplier> s)
         {
-            if (c == null || c.Value == null)
+            if (s == null || s.Value == null)
                 return null;
-            return AdaptSupplier(c.Value, null);
+            return AdaptSupplier(s.Value, null);
         }
-        internal static BL.DomainModel.Supplier AdaptSupplier(Supplier o)
+        internal static BL.DomainModel.Supplier AdaptSupplier(Supplier s)
         {
-            return AdaptSupplier(o, null);
+            return AdaptSupplier(s, null);
         }
 
-        internal static BL.DomainModel.Supplier AdaptSupplier(Supplier c, BL.DomainModel.User user)
+        internal static BL.DomainModel.Supplier AdaptSupplier(Supplier s, BL.DomainModel.User user)
         {
             BL.DomainModel.Supplier supplier = new BL.DomainModel.Supplier()
             {
-                AccountNumber = c.AccountNumber,
-                CreditRating = c.CreditRating,
-                PreferredSupplierFlag = c.PreferredSupplierFlag,
-                ActiveFlag = c.ActiveFlag,
-                PurchasingWebServiceURL = c.PurchasingWebServiceURL,
-                Version = c.Version.ToUlong(),
+                AccountNumber = s.AccountNumber,
+                CreditRating = s.CreditRating,
+                PreferredSupplierFlag = s.PreferredSupplierFlag,
+                ActiveFlag = s.ActiveFlag,
+                PurchasingWebServiceURL = s.PurchasingWebServiceURL,
+                Version = s.Version.ToUlong(),
             };
             //customer.Orders = OrderAdapter.AdaptOrders(c.Orders, customer);
             //customer.Addresses = AddressAdapter.AdaptAddresses(c.Addresses);

@@ -92,6 +92,7 @@
     <Compile Include="SpecialCases\MissingCustomer.cs" />
     <Compile Include="SpecialCases\MissingOrder.cs" />
     <Compile Include="SpecialCases\MissingProduct.cs" />
+    <Compile Include="SpecialCases\MissingSupplier.cs" />
     <Compile Include="SpecialCases\MissingUser.cs" />
     <Compile Include="SpecialCases\UnknownOrder.cs" />
     <Compile Include="SpecialCases\UnkownCustomer.cs" />
