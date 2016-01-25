@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="HsrOrderAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="HsrOrderAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Addresses">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -84,6 +84,7 @@
             <PropertyRef Name="SupplierId" />
           </Key>
           <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreditRating" Type="smallint" Nullable="false" />
           <Property Name="PreferredSupplierFlag" Type="bit" Nullable="false" />
@@ -91,8 +92,6 @@
           <Property Name="PurchasingWebServiceURL" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6005: The data type 'date' is currently not supported for the target Entity Framework version; the column 'LastReceiptDate' in the table 'HsrOrderApp.dbo.SupplierToProduct' was excluded.-->
         <EntityType Name="SupplierToProduct">
           <Key>
             <PropertyRef Name="SupplierToProductId" />
@@ -103,6 +102,7 @@ warning 6005: The data type 'date' is currently not supported for the target Ent
           <Property Name="AverageLeadTime" Type="int" Nullable="false" />
           <Property Name="StandardPrice" Type="money" Nullable="false" />
           <Property Name="LastReceiptCost" Type="money" Nullable="false" />
+          <Property Name="LastReceiptDate" Type="date" />
           <Property Name="MinOrderQty" Type="int" Nullable="false" />
           <Property Name="MaxOrderQty" Type="int" Nullable="false" />
           <Property Name="Version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
@@ -486,6 +486,7 @@ warning 6005: The data type 'date' is currently not supported for the target Ent
           <Property Name="PurchasingWebServiceURL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" a:StoreGeneratedPattern="Computed" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <NavigationProperty Name="SupplierToProducts" Relationship="HsrOrderAppModel.FK_SupplierToProduct_Supplier_SupplierId" FromRole="Supplier" ToRole="SupplierToProduct" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SupplierToProduct">
           <Key>
@@ -502,6 +503,7 @@ warning 6005: The data type 'date' is currently not supported for the target Ent
           <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" a:StoreGeneratedPattern="Computed" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <NavigationProperty Name="Product" Relationship="HsrOrderAppModel.FK_SupplierToProduct_Product_ProductId" FromRole="SupplierToProduct" ToRole="Product" />
           <NavigationProperty Name="Supplier" Relationship="HsrOrderAppModel.FK_SupplierToProduct_Supplier_SupplierId" FromRole="SupplierToProduct" ToRole="Supplier" />
+          <Property Name="LastReceiptDate" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_SupplierToProduct_Product_ProductId">
           <End Type="HsrOrderAppModel.Product" Role="Product" Multiplicity="1" />
@@ -663,6 +665,7 @@ warning 6005: The data type 'date' is currently not supported for the target Ent
           <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="HsrOrderAppModel.Supplier">
               <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
                 <ScalarProperty Name="PurchasingWebServiceURL" ColumnName="PurchasingWebServiceURL" />
                 <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
@@ -676,6 +679,7 @@ warning 6005: The data type 'date' is currently not supported for the target Ent
           <EntitySetMapping Name="SupplierToProducts">
             <EntityTypeMapping TypeName="HsrOrderAppModel.SupplierToProduct">
               <MappingFragment StoreEntitySet="SupplierToProduct">
+                <ScalarProperty Name="LastReceiptDate" ColumnName="LastReceiptDate" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
                 <ScalarProperty Name="MaxOrderQty" ColumnName="MaxOrderQty" />
                 <ScalarProperty Name="MinOrderQty" ColumnName="MinOrderQty" />
@@ -705,6 +709,7 @@ warning 6005: The data type 'date' is currently not supported for the target Ent
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

@@ -83,10 +83,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs">
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HsrOrderApp.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HsrOrderApp.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HsrOrderApp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
+    </Compile>
     <Compile Include="HsrOrderApp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HsrOrderApp.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Adapters\AddressAdapter.cs" />
@@ -108,8 +133,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Repositories\SupplierRepository.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierToProduct.cs">
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
+    </Compile>
     <Compile Include="TimeStampConverter.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>HsrOrderApp.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +190,21 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HsrOrderApp.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HsrOrderApp.Context.cs</LastGenOutput>
+      <DependentUpon>HsrOrderApp.edmx</DependentUpon>
+    </Content>
+    <Content Include="HsrOrderApp.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HsrOrderApp.cs</LastGenOutput>
+      <DependentUpon>HsrOrderApp.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
