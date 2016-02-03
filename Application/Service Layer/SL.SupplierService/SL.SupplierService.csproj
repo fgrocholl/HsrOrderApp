@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +47,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business Layer\HsrOrderApp.BL.BusinessComponents\BL.BusinessComponents.csproj">
+      <Project>{82729EF6-F861-4A4E-AC67-172476735CBB}</Project>
+      <Name>BL.BusinessComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business Layer\HsrOrderApp.BL.DomainModel\BL.DomainModel.csproj">
+      <Project>{04B91F08-9014-400B-B452-1BA98AC3977A}</Project>
+      <Name>BL.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business Layer\HsrOrderApp.BL.DTOAdapters\BL.DTOAdapters.csproj">
+      <Project>{769807BA-0BC3-4634-969E-F9AFB57AA739}</Project>
+      <Name>BL.DTOAdapters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared Libraries\HsrOrderApp.SharedLibraries.DTO\SharedLibraries.DTO.csproj">
+      <Project>{D209C395-0953-4F41-A206-0B9646B9E48B}</Project>
+      <Name>SharedLibraries.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared Libraries\HsrOrderApp.SharedLibraries.ServiceInterfaces\SharedLibraries.ServiceInterfaces.csproj">
+      <Project>{2B168632-B4DF-4339-8936-60429C52B556}</Project>
+      <Name>SharedLibraries.ServiceInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared Libraries\HsrOrderApp.SharedLibraries.SharedEnums\SharedLibraries.SharedEnums.csproj">
+      <Project>{12094D77-A745-4457-A125-B5C3EE366A39}</Project>
+      <Name>SharedLibraries.SharedEnums</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

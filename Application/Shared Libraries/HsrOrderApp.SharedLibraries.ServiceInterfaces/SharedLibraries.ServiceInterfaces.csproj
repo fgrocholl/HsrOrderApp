@@ -97,6 +97,10 @@
     <None Include="Diagram\IAdminService.cd" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Business Layer\HsrOrderApp.BL.DomainModel\BL.DomainModel.csproj">
+      <Project>{04B91F08-9014-400B-B452-1BA98AC3977A}</Project>
+      <Name>BL.DomainModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HsrOrderApp.SharedLibraries.DTO\SharedLibraries.DTO.csproj">
       <Project>{D209C395-0953-4F41-A206-0B9646B9E48B}</Project>
       <Name>SharedLibraries.DTO</Name>

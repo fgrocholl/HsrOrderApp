@@ -1,10 +1,9 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Linq;
 using System.ServiceModel;
+using HsrOrderApp.BL.DomainModel;
 using HsrOrderApp.SharedLibraries.DTO.Faults;
-using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF;
-using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF;
 using HsrOrderApp.SharedLibraries.DTO.Requests_Responses;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF;
 
 namespace HsrOrderApp.SharedLibraries.ServiceInterfaces
 {
@@ -17,13 +16,17 @@ namespace HsrOrderApp.SharedLibraries.ServiceInterfaces
 
     [ServiceContract(Namespace = "http://ch.hsr.HsrOrderApp")]
     [ValidationBehavior]
-
     public interface ISupplierService
     {
         [OperationContract]
-        [FaultContract(typeof(ServiceFault))]
-        [FaultContract(typeof(ValidationFault))]
-
+        [FaultContract(typeof (ServiceFault))]
+        [FaultContract(typeof (ValidationFault))]
         GetSupplierResponse GetSupplierById(GetSupplierRequest request);
+
+        GetSuppliersResponse GetSupplierBySearchCriteria(GetSuppliersRequest request);
+
+        StoreSupplierResponse SaveSupplier(StoreSupplierRequest request);
+
+        DeleteSupplierResponse DeleteSupplier(DeleteSupplierRequest request);
     }
 }
