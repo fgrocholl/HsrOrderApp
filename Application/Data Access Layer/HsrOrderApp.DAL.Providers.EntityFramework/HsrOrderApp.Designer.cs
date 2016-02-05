@@ -1689,7 +1689,8 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework
         /// <param name="activeFlag">Initial value of the ActiveFlag property.</param>
         /// <param name="purchasingWebServiceURL">Initial value of the PurchasingWebServiceURL property.</param>
         /// <param name="version">Initial value of the Version property.</param>
-        public static Supplier CreateSupplier(global::System.Int32 supplierId, global::System.String accountNumber, global::System.Int16 creditRating, global::System.Boolean preferredSupplierFlag, global::System.Boolean activeFlag, global::System.String purchasingWebServiceURL, global::System.Byte[] version)
+        /// <param name="supplierName">Initial value of the SupplierName property.</param>
+        public static Supplier CreateSupplier(global::System.Int32 supplierId, global::System.String accountNumber, global::System.Int16 creditRating, global::System.Boolean preferredSupplierFlag, global::System.Boolean activeFlag, global::System.String purchasingWebServiceURL, global::System.Byte[] version, global::System.String supplierName)
         {
             Supplier supplier = new Supplier();
             supplier.SupplierId = supplierId;
@@ -1699,6 +1700,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework
             supplier.ActiveFlag = activeFlag;
             supplier.PurchasingWebServiceURL = purchasingWebServiceURL;
             supplier.Version = version;
+            supplier.SupplierName = supplierName;
             return supplier;
         }
 
@@ -1876,6 +1878,30 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework
         private global::System.Byte[] _Version;
         partial void OnVersionChanging(global::System.Byte[] value);
         partial void OnVersionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SupplierName
+        {
+            get
+            {
+                return _SupplierName;
+            }
+            set
+            {
+                OnSupplierNameChanging(value);
+                ReportPropertyChanging("SupplierName");
+                _SupplierName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SupplierName");
+                OnSupplierNameChanged();
+            }
+        }
+        private global::System.String _SupplierName;
+        partial void OnSupplierNameChanging(global::System.String value);
+        partial void OnSupplierNameChanged();
 
         #endregion
 
@@ -2167,6 +2193,30 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework
         private global::System.Byte[] _Version;
         partial void OnVersionChanging(global::System.Byte[] value);
         partial void OnVersionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LastReceiptDate
+        {
+            get
+            {
+                return _LastReceiptDate;
+            }
+            set
+            {
+                OnLastReceiptDateChanging(value);
+                ReportPropertyChanging("LastReceiptDate");
+                _LastReceiptDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LastReceiptDate");
+                OnLastReceiptDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LastReceiptDate;
+        partial void OnLastReceiptDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnLastReceiptDateChanged();
 
         #endregion
 

@@ -26,5 +26,6 @@ namespace HsrOrderApp.BL.DomainModel
         public string PurchasingWebServiceURL { get; set; }
 
         public IQueryable<Product> Products { get; set; }
+        public string SupplierName { get; set; }
     }
 }

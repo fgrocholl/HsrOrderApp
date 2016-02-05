@@ -79,6 +79,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
                 dbSupplier.PreferredSupplierFlag = supplier.PreferredSupplierFlag;
                 dbSupplier.ActiveFlag = supplier.ActiveFlag;
                 dbSupplier.PurchasingWebServiceURL = supplier.PurchasingWebServiceURL;
+                dbSupplier.SupplierName = supplier.SupplierName;
                 if (isNew)
                 {
                     db.AddToSuppliers(dbSupplier);

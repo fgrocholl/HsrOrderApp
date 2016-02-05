@@ -25,6 +25,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories.Adapters
                 ActiveFlag = s.ActiveFlag,
                 PurchasingWebServiceURL = s.PurchasingWebServiceURL,
                 Version = s.Version.ToUlong(),
+                SupplierName = s.SupplierName
             };
             //customer.Orders = OrderAdapter.AdaptOrders(c.Orders, customer);
             //customer.Addresses = AddressAdapter.AdaptAddresses(c.Addresses);

@@ -34,7 +34,7 @@ namespace HsrOrderApp.BL.BusinessComponents
                     suppliers = _repository.GetAll();
                     break;
                 case SupplierSearchType.ByName:
-                    //suppliers= _repository.GetAll().Where(su=>su.Name==supplierName);
+                    suppliers= _repository.GetAll().Where(su=>su.SupplierName==supplierName);
                     break;
             }
             return suppliers;

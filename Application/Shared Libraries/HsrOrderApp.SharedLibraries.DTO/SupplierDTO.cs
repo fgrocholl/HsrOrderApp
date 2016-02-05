@@ -15,6 +15,7 @@ namespace HsrOrderApp.SharedLibraries.DTO
         private string _accountNumber;
         private short _creditRating;
         private string _purchasingWebServiceURL;
+        private string _supplierName;
 
         [DataMember]
         [NotNullValidator]
@@ -80,6 +81,22 @@ namespace HsrOrderApp.SharedLibraries.DTO
                 {
                     this._purchasingWebServiceURL = value;
                     OnPropertyChanged(() => PurchasingWebServiceURL);
+                }
+            }
+        }
+
+        [DataMember]
+        [NotNullValidator]
+        [StringLengthValidator(1, 255)]
+        public string SupplierName
+        {
+            get { return _supplierName; }
+            set
+            {
+                if (value != _supplierName)
+                {
+                    this._supplierName = value;
+                    OnPropertyChanged(() => SupplierName);
                 }
             }
         }

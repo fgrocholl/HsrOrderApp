@@ -16,7 +16,8 @@ namespace HsrOrderApp.BL.DtoAdapters
                 CreditRating = s.CreditRating,
                 SupplierId = s.SupplierId,
                 PurchasingWebServiceURL = s.PurchasingWebServiceURL,
-                PreferredSupplierFlag = s.PreferredSupplierFlag
+                PreferredSupplierFlag = s.PreferredSupplierFlag,
+                SupplierName = s.SupplierName
             };
             return dto;
         }
@@ -32,7 +33,8 @@ namespace HsrOrderApp.BL.DtoAdapters
                 ActiveFlag = dto.ActiveFlag,
                 CreditRating = dto.CreditRating,
                 PreferredSupplierFlag = dto.PreferredSupplierFlag,
-                PurchasingWebServiceURL = dto.PurchasingWebServiceURL
+                PurchasingWebServiceURL = dto.PurchasingWebServiceURL,
+                SupplierName = dto.SupplierName
             };
             return supplier;
         }
