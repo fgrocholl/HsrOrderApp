@@ -14,7 +14,6 @@ namespace HsrOrderApp.SharedLibraries.DTO
         private int _creditRating;
         private string _purchasingWebServiceURL;
         private string _supplierName;
-        private IList<AddressDTO> _addresses;
         //private IList<ConditionDTO> _conditions;
         
         [DataMember]
@@ -83,21 +82,6 @@ namespace HsrOrderApp.SharedLibraries.DTO
                 {
                     this._supplierName = value;
                     OnPropertyChanged(() => SupplierName);
-                }
-            }
-        }
-
-        [DataMember]
-        [ObjectCollectionValidator(typeof(AddressDTO))]
-        public IList<AddressDTO> Addresses
-        {
-            get { return _addresses; }
-            set
-            {
-                if (value != _addresses)
-                {
-                    this._addresses = value;
-                    OnPropertyChanged(() => Addresses);
                 }
             }
         }

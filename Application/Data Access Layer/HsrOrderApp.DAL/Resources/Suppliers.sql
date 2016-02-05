@@ -12,7 +12,7 @@ SET ANSI_PADDING ON
 GO
 
 CREATE TABLE [dbo].[Suppliers](
-	[SupplierId] [int] NOT NULL,
+	[SupplierId] [int] IDENTITY (1, 1) NOT NULL,
 	[SupplierName] [nvarchar](255) NOT NULL,
 	[AccountNumber] [nvarchar](50) NOT NULL,
 	[CreditRating] [smallint] NOT NULL,

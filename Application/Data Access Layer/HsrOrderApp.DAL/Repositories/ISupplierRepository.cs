@@ -15,5 +15,11 @@ namespace HsrOrderApp.DAL.Data.Repositories
         int SaveSupplier(Supplier supplier);
 
         void DeleteSupplier(int id);
+        
+        IQueryable<SupplierToProduct> GetAllSupplierToProduct();
+        
+        int SaveSupplierToProduct(SupplierToProduct detail, Supplier forThisSupplier);
+
+        void DeleteSupplierToProduct(int id);
     }
 }

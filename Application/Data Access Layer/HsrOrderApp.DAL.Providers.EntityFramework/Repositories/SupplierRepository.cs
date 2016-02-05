@@ -103,5 +103,28 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
                 db.SaveChanges();
             }
         }
+
+        public IQueryable<BL.DomainModel.SupplierToProduct> GetAllSupplierToProduct()
+        {
+            var supplierToProducts = from od in this.db.SupplierToProducts.Include("Product").Include("Supplier").AsEnumerable()
+                               select SupplierAdapter.AdaptSupplierToProduct(od);
+
+            return supplierToProducts.AsQueryable();
+        }
+
+        public int SaveSupplierToProduct(BL.DomainModel.SupplierToProduct detail, BL.DomainModel.Supplier forThisSupplier)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteSupplierToProduct(int id)
+        {
+            SupplierToProduct cu = db.SupplierToProducts.FirstOrDefault(c => c.SupplierToProductId == id);
+            if (cu != null)
+            {
+                db.DeleteObject(cu);
+                db.SaveChanges();
+            }
+        }
     }
 }

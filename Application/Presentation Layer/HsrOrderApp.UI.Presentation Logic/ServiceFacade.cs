@@ -479,7 +479,7 @@ namespace HsrOrderApp.UI.PresentationLogic
             try
             {
                 GetSupplierRequest request = new GetSupplierRequest();
-                request.Id = id;
+                request.SupplierId = id;
                 GetSupplierResponse response = Service.GetSupplierById(request);
                 return response.Supplier;
             }

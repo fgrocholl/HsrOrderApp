@@ -11,7 +11,7 @@ namespace HsrOrderApp.BL.DomainModel
     {
         public Supplier()
         {
-            this.Products = new List<Product>().AsQueryable();
+            this.SupplierToProducts = new List<SupplierToProduct>().AsQueryable();
         }
         public int SupplierId { get; set; }
 
@@ -25,7 +25,7 @@ namespace HsrOrderApp.BL.DomainModel
 
         public string PurchasingWebServiceURL { get; set; }
 
-        public IQueryable<Product> Products { get; set; }
+        public IQueryable<SupplierToProduct> SupplierToProducts { get; set; }
         public string SupplierName { get; set; }
     }
 }

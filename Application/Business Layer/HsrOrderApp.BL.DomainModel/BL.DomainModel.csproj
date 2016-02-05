@@ -84,6 +84,8 @@
     <Compile Include="Base\DomainObject.cs" />
     <Compile Include="Base\IValidateObject.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="SpecialCases\UnknownSupplier.cs" />
+    <Compile Include="SupplierToProduct.cs" />
     <Compile Include="OrderDetail.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

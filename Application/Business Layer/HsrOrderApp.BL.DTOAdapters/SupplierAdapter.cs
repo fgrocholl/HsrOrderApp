@@ -11,10 +11,10 @@ namespace HsrOrderApp.BL.DtoAdapters
         {
             SupplierDTO dto = new SupplierDTO
             {
+                Id = s.SupplierId,
                 AccountNumber = s.AccountNumber,
                 ActiveFlag = s.ActiveFlag,
                 CreditRating = s.CreditRating,
-                Id = s.SupplierId,
                 PurchasingWebServiceURL = s.PurchasingWebServiceURL,
                 PreferredSupplierFlag = s.PreferredSupplierFlag,
                 SupplierName = s.SupplierName

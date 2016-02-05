@@ -192,7 +192,7 @@ namespace HsrOrderApp.SL.AdminService
             GetSupplierResponse response = new GetSupplierResponse();
             SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
 
-            Supplier supplier = bc.GetSupplierById(request.Id);
+            Supplier supplier = bc.GetSupplierById(request.SupplierId);
             response.Supplier = SupplierAdapter.SupplierToDto(supplier);
 
             return response;

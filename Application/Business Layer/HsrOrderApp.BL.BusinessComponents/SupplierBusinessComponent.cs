@@ -71,6 +71,12 @@ namespace HsrOrderApp.BL.BusinessComponents
             set { this.rep = value; }
         }
 
+        public List<SupplierToProduct> GetAllSupplierToProduct()
+        {
+            // Not as queriable due to problems with Linq2SQL implementation
+            return rep.GetAllSupplierToProduct().ToList();
+        }
+
         public void GetEstimatedSupplierDeliveryTime(int supplierId, out int unitsAvailable, out int estimatedDeliveryTimeInDays)
         {
             unitsAvailable = 1;
