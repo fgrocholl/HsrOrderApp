@@ -7,8 +7,6 @@ using HsrOrderApp.BL.DomainModel.SpecialCases;
 using HsrOrderApp.DAL.Data.Repositories;
 using HsrOrderApp.DAL.Providers.EntityFramework.Repositories.Adapters;
 using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
-using HsrOrderApp.DAL.Repositories;
-using HsrOrderApp.BL.DomainModel;
 
 namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
 {
@@ -75,7 +73,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
 
                 dbSupplier.AccountNumber = supplier.AccountNumber;
                 dbSupplier.ActiveFlag = supplier.ActiveFlag;
-                dbSupplier.CreditRating = supplier.CreditRating;
+                dbSupplier.CreditRating = Convert.ToInt16(supplier.CreditRating);
                 dbSupplier.PreferredSupplierFlag = supplier.PreferredSupplierFlag;
                 dbSupplier.ActiveFlag = supplier.ActiveFlag;
                 dbSupplier.PurchasingWebServiceURL = supplier.PurchasingWebServiceURL;

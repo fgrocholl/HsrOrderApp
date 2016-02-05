@@ -17,7 +17,7 @@ namespace HsrOrderApp.BL.DomainModel
 
         public string AccountNumber { get; set; }
 
-        public short CreditRating { get; set; }
+        public int CreditRating { get; set; }
 
         public bool PreferredSupplierFlag { get; set; }
 

@@ -12,7 +12,7 @@ namespace HsrOrderApp.UI.Mvc.Controllers
     [CustomAuthorize(RequiredPermissions = new UserPermission[] { UserPermission.ADMIN, UserPermission.STAFF })]
     public class SupplierController : HsrOrderAppController
     {
-        // GET: Product
+        // GET: Supplier
         public ActionResult Index()
         {
             var vm = new SupplierListViewModel();
@@ -24,49 +24,49 @@ namespace HsrOrderApp.UI.Mvc.Controllers
             return View(vm);
         }
 
-        // GET: Product/Details/5
+        // GET: Supplier/Details/5
         public ActionResult Details(int id)
         {
-            ProductDTO item = Service.GetProductById(id);
+            SupplierDTO item = Service.GetSupplierById(id);
             return DisplayDetails(item);
         }
 
-        // GET: Product/Create
+        // GET: Supplier/Create
         public ActionResult Create()
         {
-            ProductDTO item = new ProductDTO();
+            SupplierDTO item = new SupplierDTO();
             return DisplayDetails(item);
         }
 
-        // POST: Product/Create
+        // POST: Supplier/Create
         [HttpPost]
-        public ActionResult Create(ProductViewModel vmChanged)
+        public ActionResult Create(SupplierViewModel vmChanged)
         {
-            ProductViewModel vm = DisplayDetails(vmChanged);
+            SupplierViewModel vm = DisplayDetails(vmChanged);
             return StoreEntity(vm);
         }
 
-        // GET: Product/Edit/5
+        // GET: Supplier/Edit/5
         public ActionResult Edit(int id)
         {
-            ProductDTO item = Service.GetProductById(id);
+            SupplierDTO item = Service.GetSupplierById(id);
             return DisplayDetails(item);
         }
 
-        // POST: Product/Edit/5
+        // POST: Supplier/Edit/5
         [HttpPost]
-        public ActionResult Edit(ProductViewModel vmChanged)
+        public ActionResult Edit(SupplierViewModel vmChanged)
         {
-            ProductViewModel vm = DisplayDetails(vmChanged);
+            SupplierViewModel vm = DisplayDetails(vmChanged);
             return StoreEntity(vm);
         }
 
-        // GET: Product/Delete/5
+        // GET: Supplier/Delete/5
         public ActionResult Delete(int id)
         {
             try
             {
-                Service.DeleteProduct(id);
+                Service.DeleteSupplier(id);
             }
             catch (Exception ex)
             {
@@ -75,18 +75,18 @@ namespace HsrOrderApp.UI.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
-        protected ProductViewModel DisplayDetails(ProductViewModel vmChanged)
+        protected SupplierViewModel DisplayDetails(SupplierViewModel vmChanged)
         {
-            var vm = new ProductViewModel();
-            vm.DisplayName = Strings.ProductViewModel_DisplayName;
+            var vm = new SupplierViewModel();
+            vm.DisplayName = Strings.SupplierViewModel_DisplayName;
             vm.Model = vmChanged.Model;
 
             return vm;
         }
-        protected ActionResult DisplayDetails(ProductDTO item)
+        protected ActionResult DisplayDetails(SupplierDTO item)
         {
-            var vm = GetViewModelFromTempData<ProductViewModel>() ?? new ProductViewModel();
-            vm.DisplayName = Strings.ProductViewModel_DisplayName;
+            var vm = GetViewModelFromTempData<SupplierViewModel>() ?? new SupplierViewModel();
+            vm.DisplayName = Strings.SupplierViewModel_DisplayName;
             vm.Model = item;
 
             // Finish Action
@@ -94,13 +94,13 @@ namespace HsrOrderApp.UI.Mvc.Controllers
             return View(vm);
         }
 
-        protected ActionResult StoreEntity(ProductViewModel vm)
+        protected ActionResult StoreEntity(SupplierViewModel vm)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Service.StoreProduct(vm.Model);
+                    Service.StoreSupplier(vm.Model);
 
                     // Finish Action and go back to Index
                     StoreViewModelToTempData(vm);

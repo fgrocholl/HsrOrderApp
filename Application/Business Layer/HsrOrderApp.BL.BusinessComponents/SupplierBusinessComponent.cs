@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Transactions;
 using HsrOrderApp.BL.DomainModel;
-using HsrOrderApp.DAL.Repositories;
+using HsrOrderApp.DAL.Data.Repositories;
 using HsrOrderApp.SharedLibraries.SharedEnums;
 
 namespace HsrOrderApp.BL.BusinessComponents

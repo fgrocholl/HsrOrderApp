@@ -14,7 +14,7 @@ namespace HsrOrderApp.BL.DtoAdapters
                 AccountNumber = s.AccountNumber,
                 ActiveFlag = s.ActiveFlag,
                 CreditRating = s.CreditRating,
-                SupplierId = s.SupplierId,
+                Id = s.SupplierId,
                 PurchasingWebServiceURL = s.PurchasingWebServiceURL,
                 PreferredSupplierFlag = s.PreferredSupplierFlag,
                 SupplierName = s.SupplierName
@@ -28,7 +28,7 @@ namespace HsrOrderApp.BL.DtoAdapters
         {
             Supplier supplier = new Supplier
             {
-                SupplierId = dto.SupplierId,
+                SupplierId = dto.Id,
                 AccountNumber = dto.AccountNumber,
                 ActiveFlag = dto.ActiveFlag,
                 CreditRating = dto.CreditRating,

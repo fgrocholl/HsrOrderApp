@@ -8,32 +8,15 @@ using System.Text;
 
 namespace HsrOrderApp.SharedLibraries.DTO
 {
-    [HasSelfValidation]
     public class SupplierDTO : DTOParentObject
     {
-        private int _supplierId;
         private string _accountNumber;
-        private short _creditRating;
+        private int _creditRating;
         private string _purchasingWebServiceURL;
         private string _supplierName;
         private IList<AddressDTO> _addresses;
         //private IList<ConditionDTO> _conditions;
         
-        [DataMember]
-        [NotNullValidator]
-        public int SupplierId
-        {
-            get { return _supplierId; }
-            set
-            {
-                if (value != _supplierId)
-                {
-                    this._supplierId = value;
-                    OnPropertyChanged(() => SupplierId);
-                }
-            }
-        }
-
         [DataMember]
         [NotNullValidator]
         [StringLengthValidator(1, 50)]
@@ -53,7 +36,7 @@ namespace HsrOrderApp.SharedLibraries.DTO
         [DataMember]
         [NotNullValidator]
         [RangeValidator(1, RangeBoundaryType.Inclusive, 5, RangeBoundaryType.Ignore)]
-        public short CreditRating
+        public int CreditRating
         {
             get { return _creditRating; }
             set
