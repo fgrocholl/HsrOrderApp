@@ -13,6 +13,7 @@ GO
 
 CREATE TABLE [dbo].[Suppliers](
 	[SupplierId] [int] NOT NULL,
+	[SupplierName] [nvarchar](255) NOT NULL,
 	[AccountNumber] [nvarchar](50) NOT NULL,
 	[CreditRating] [smallint] NOT NULL,
 	[PreferredSupplierFlag] [bit] NOT NULL,
