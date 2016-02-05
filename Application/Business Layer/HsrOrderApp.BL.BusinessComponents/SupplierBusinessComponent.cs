@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using HsrOrderApp.BL.DomainModel;
 using HsrOrderApp.DAL.Repositories;
 using HsrOrderApp.SharedLibraries.SharedEnums;
@@ -8,46 +9,85 @@ namespace HsrOrderApp.BL.BusinessComponents
 {
     public class SupplierBusinessComponent
     {
-        private ISupplierRepository _repository;
+        private ISupplierRepository rep;
 
-        public SupplierBusinessComponent(ISupplierRepository repository)
+        public SupplierBusinessComponent()
         {
-            _repository = repository;
         }
 
-        public ISupplierRepository SupplierRepository { get; set; }
+        public SupplierBusinessComponent(ISupplierRepository unitOfWork)
+        {
+            this.rep = unitOfWork;
+        }
 
-
+        #region CRUD Operations
 
         public Supplier GetSupplierById(int supplierId)
         {
-            Supplier supplier = _repository.GetById(supplierId);
+            Supplier supplier = rep.GetById(supplierId);
             return supplier;
         }
 
+
         public IQueryable<Supplier> GetSuppliersByCriteria(SupplierSearchType searchType, string supplierName)
         {
-            IQueryable<Supplier> suppliers = new List<Supplier>().AsQueryable();
+            IQueryable<Supplier> suppliers = null;
+
             switch (searchType)
             {
                 case SupplierSearchType.None:
-                    suppliers = _repository.GetAll();
+                    suppliers = rep.GetAll();
                     break;
                 case SupplierSearchType.ByName:
-                    suppliers= _repository.GetAll().Where(su=>su.SupplierName==supplierName);
+                    suppliers = rep.GetAll().Where(cu => cu.SupplierName == supplierName);
                     break;
             }
+
             return suppliers;
         }
 
         public int StoreSupplier(Supplier supplier)
         {
-           return  _repository.SaveSupplier(supplier);
+            int supplierId;
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                supplierId = rep.SaveSupplier(supplier);
+                transaction.Complete();
+            }
+
+            return supplierId;
         }
 
         public void DeleteSupplier(int supplierId)
         {
-            _repository.DeleteSupplier(supplierId);
+            rep.DeleteSupplier(supplierId);
+        }
+
+        #endregion
+
+        public ISupplierRepository Repository
+        {
+            get { return this.rep; }
+            set { this.rep = value; }
+        }
+
+        public void GetEstimatedSupplierDeliveryTime(int supplierId, out int unitsAvailable, out int estimatedDeliveryTimeInDays)
+        {
+            unitsAvailable = 1;
+            estimatedDeliveryTimeInDays = 1;
+            //OrderBusinessComponent orderBC = DependencyInjectionHelper.GetOrderBusinessComponent();
+            //Supplier supplier = rep.GetById(supplierId);
+
+            //int unitsOrdered = orderBC.GetAllOrderDetails()
+            //    .Where(od => od.Product.ProductId == supplier.ProductId)
+            //    .Sum(od => od.QuantityInUnits);
+
+            //unitsAvailable = supplier.UnitsOnStock - unitsOrdered;
+            //if ((unitsAvailable) < 0) 
+            //    unitsAvailable = 0;
+
+            //estimatedDeliveryTimeInDays = -1;
+            // Todo: Implement the logic to calculate the estimatedDelivertyTimeInDays (see SupplierCondition)
         }
     }
 }

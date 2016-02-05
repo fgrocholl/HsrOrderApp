@@ -472,6 +472,100 @@ namespace HsrOrderApp.UI.PresentationLogic
 
         #endregion
 
+        #region Supplier
+
+        public SupplierDTO GetSupplierById(int id)
+        {
+            try
+            {
+                GetSupplierRequest request = new GetSupplierRequest();
+                request.Id = id;
+                GetSupplierResponse response = Service.GetSupplierById(request);
+                return response.Supplier;
+            }
+            catch (Exception ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "PL Policy")) throw;
+                return new SupplierDTO();
+            }
+        }
+
+        public IList<SupplierDTO> GetSuppliersByName(string name)
+        {
+            return GetSuppliers(SupplierSearchType.ByName, name);
+        }
+
+        public IList<SupplierDTO> GetAllSuppliers()
+        {
+            return GetSuppliers(SupplierSearchType.None, default(string));
+        }
+
+        public void StoreSupplier(SupplierDTO supplier)
+        {
+            try
+            {
+                StoreSupplierRequest request = new StoreSupplierRequest();
+                request.Supplier = supplier;
+                StoreSupplierResponse response = Service.StoreSupplier(request);
+                supplier.Id = response.Id;
+            }
+            catch (Exception ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "PL Policy")) throw;
+            }
+        }
+
+        public void DeleteSupplier(int supplierId)
+        {
+            try
+            {
+                DeleteSupplierRequest request = new DeleteSupplierRequest();
+                request.Id = supplierId;
+                DeleteSupplierResponse response = Service.DeleteSupplier(request);
+            }
+            catch (Exception ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "PL Policy")) throw;
+            }
+        }
+
+        public void GetEstimatedSupplierDeliveryTime(int supplierId, out int unitsAvailable, out int estimatedDeliveryTime)
+        {
+            unitsAvailable = default(int);
+            estimatedDeliveryTime = -1;
+            try
+            {
+                GetEstimatedDeliveryTimeRequest request = new GetEstimatedDeliveryTimeRequest();
+                request.Id = supplierId;
+                GetEstimatedDeliveryTimeResponse response = Service.GetEstimatedDeliveryTime(request);
+                unitsAvailable = response.UnitsAvailable;
+                estimatedDeliveryTime = response.EstimatedDeliveryTime;
+            }
+            catch (Exception ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "PL Policy")) throw;
+            }
+        }
+
+        private IList<SupplierDTO> GetSuppliers(SupplierSearchType searchType, string name)
+        {
+            try
+            {
+                GetSuppliersRequest request = new GetSuppliersRequest();
+                request.SearchType = searchType;
+                request.SupplierName = name;
+                GetSuppliersResponse response = Service.GetSuppliersByCriteria(request);
+                return response.Suppliers;
+            }
+            catch (Exception ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "PL Policy")) throw;
+                return new List<SupplierDTO>();
+            }
+        }
+
+        #endregion
+
         #region IServiceFacade Members
 
         public void Dispose()

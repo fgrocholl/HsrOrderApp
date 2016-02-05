@@ -16,7 +16,9 @@ namespace HsrOrderApp.SharedLibraries.DTO
         private short _creditRating;
         private string _purchasingWebServiceURL;
         private string _supplierName;
-
+        private IList<AddressDTO> _addresses;
+        //private IList<ConditionDTO> _conditions;
+        
         [DataMember]
         [NotNullValidator]
         public int SupplierId
@@ -50,6 +52,7 @@ namespace HsrOrderApp.SharedLibraries.DTO
 
         [DataMember]
         [NotNullValidator]
+        [RangeValidator(1, RangeBoundaryType.Inclusive, 5, RangeBoundaryType.Ignore)]
         public short CreditRating
         {
             get { return _creditRating; }
@@ -100,5 +103,35 @@ namespace HsrOrderApp.SharedLibraries.DTO
                 }
             }
         }
+
+        [DataMember]
+        [ObjectCollectionValidator(typeof(AddressDTO))]
+        public IList<AddressDTO> Addresses
+        {
+            get { return _addresses; }
+            set
+            {
+                if (value != _addresses)
+                {
+                    this._addresses = value;
+                    OnPropertyChanged(() => Addresses);
+                }
+            }
+        }
+
+        //[DataMember]
+        //[ObjectCollectionValidator(typeof(ConditionDTO))]
+        //public IList<AddressDTO> SupplierConditions
+        //{
+        //    get { return _conditions; }
+        //    set
+        //    {
+        //        if (value != _conditions)
+        //        {
+        //            this._conditions = value;
+        //            OnPropertyChanged(() => Addresses);
+        //        }
+        //    }
+        //}
     }
 }
